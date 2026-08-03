@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coffee House</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#111;
+    color:white;
+}
+
+header{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px 10%;
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    font-size:32px;
+    font-weight:bold;
+    color:#d8a56d;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#d8a56d;
+}
+
+.hero{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    animation:fade 1.5s;
+}
+
+.hero h1{
+    font-size:70px;
+}
+
+.hero p{
+    margin:20px 0;
+    max-width:700px;
+    font-size:20px;
+}
+
+button{
+    padding:15px 40px;
+    border:none;
+    background:#d8a56d;
+    color:white;
+    font-size:18px;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#b87c3b;
+}
+
+section{
+    padding:100px 10%;
+}
+
+.title{
+    text-align:center;
+    font-size:42px;
+    color:#d8a56d;
+    margin-bottom:50px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 30px rgba(216,165,109,.4);
+}
+
+.card img{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    color:#d8a56d;
+    margin-bottom:10px;
+}
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:20px;
+}
+
+.about p{
+    line-height:1.8;
+    color:#ddd;
+}
+
+footer{
+    background:#0b0b0b;
+    text-align:center;
+    padding:40px;
+    color:#aaa;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:800px){
+
+.about{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+nav{
+flex-direction:column;
+gap:20px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">☕ Coffee House</div>
+
+<ul>
+<li><a href="#">Start</a></li>
+<li><a href="#about">O kawie</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#contact">Kontakt</a></li>
+</ul>
+
+</nav>
+
+<div class="hero">
+
+<h1>Najlepsza kawa każdego dnia</h1>
+
+<p>
+Aromatyczne espresso, delikatne cappuccino i wyjątkowe mieszanki ziaren z całego świata.
+Odkryj smak prawdziwej kawy.
+</p>
+
+<button>Poznaj ofertę</button>
+
+</div>
+
+</header>
+
+<section id="about">
+
+<h2 class="title">Dlaczego nasza kawa?</h2>
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80">
+
+<div>
+
+<p>
+
+Nasza kawa pochodzi z najlepszych plantacji świata. Każde ziarno jest starannie wybierane,
+a następnie wypalane tak, aby wydobyć pełnię smaku i aromatu.
+
+<br><br>
+
+Łączymy tradycję z nowoczesnością, tworząc miejsce pełne ciepła,
+w którym każda filiżanka jest wyjątkowym doświadczeniem.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="menu">
+
+<h2 class="title">Nasze Specjały</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80">
+
+<h3>Espresso</h3>
+
+<p>Mocny i intensywny smak dla prawdziwych miłośników kawy.</p>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80">
+
+<h3>Cappuccino</h3>
+
+<p>Idealne połączenie espresso, mleka i aksamitnej pianki.</p>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=800&q=80">
+
+<h3>Latte</h3>
+
+<p>Delikatna i kremowa kawa, idealna na każdą porę dnia.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="title">Zapraszamy!</h2>
+
+<div style="text-align:center; font-size:20px; line-height:2;">
+📍 Coffee House<br>
+ul. Kawowa 12<br>
+☕ Poniedziałek – Niedziela<br>
+08:00 – 21:00
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Coffee House • Projekt wykonany z pasją do kawy ☕
+
+</footer>
+
+</body>
+</html>
