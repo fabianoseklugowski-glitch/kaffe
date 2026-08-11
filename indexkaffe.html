@@ -177,20 +177,16 @@ footer{
 }
 
 @media(max-width:800px){
-
 .about{
 grid-template-columns:1fr;
 }
-
 .hero h1{
 font-size:48px;
 }
-
 nav{
 flex-direction:column;
 gap:20px;
 }
-
 }
 </style>
 
@@ -198,121 +194,113 @@ gap:20px;
 <body>
 
 <header>
-
 <nav>
-
 <div class="logo">☕ Coffee House</div>
-
 <ul>
 <li><a href="#">Start</a></li>
 <li><a href="#about">O kawie</a></li>
 <li><a href="#menu">Menu</a></li>
 <li><a href="#contact">Kontakt</a></li>
 </ul>
-
 </nav>
 
 <div class="hero">
-
 <h1>Najlepsza kawa każdego dnia</h1>
-
 <p>
 Aromatyczne espresso, delikatne cappuccino i wyjątkowe mieszanki ziaren z całego świata.
 Odkryj smak prawdziwej kawy.
 </p>
-
 <button>Poznaj ofertę</button>
-
 </div>
-
 </header>
 
 <section id="about">
-
 <h2 class="title">Dlaczego nasza kawa?</h2>
-
 <div class="about">
-
 <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80">
-
 <div>
-
 <p>
-
 Nasza kawa pochodzi z najlepszych plantacji świata. Każde ziarno jest starannie wybierane,
 a następnie wypalane tak, aby wydobyć pełnię smaku i aromatu.
-
 <br><br>
-
 Łączymy tradycję z nowoczesnością, tworząc miejsce pełne ciepła,
 w którym każda filiżanka jest wyjątkowym doświadczeniem.
-
 </p>
-
 </div>
-
 </div>
-
 </section>
 
 <section id="menu">
-
 <h2 class="title">Nasze Specjały</h2>
-
 <div class="cards">
-
 <div class="card">
-
 <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80">
-
 <h3>Espresso</h3>
-
 <p>Mocny i intensywny smak dla prawdziwych miłośników kawy.</p>
-
 </div>
-
 <div class="card">
-
 <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80">
-
 <h3>Cappuccino</h3>
-
 <p>Idealne połączenie espresso, mleka i aksamitnej pianki.</p>
-
 </div>
-
 <div class="card">
-
 <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=800&q=80">
-
 <h3>Latte</h3>
-
 <p>Delikatna i kremowa kawa, idealna na każdą porę dnia.</p>
-
 </div>
-
 </div>
-
 </section>
 
 <section id="contact">
-
 <h2 class="title">Zapraszamy!</h2>
-
 <div style="text-align:center; font-size:20px; line-height:2;">
 📍 Coffee House<br>
 ul. Kawowa 12<br>
 ☕ Poniedziałek – Niedziela<br>
 08:00 – 21:00
 </div>
-
 </section>
 
 <footer>
-
 © 2026 Coffee House • Projekt wykonany z pasją do kawy ☕
-
 </footer>
+
+<!-- WIDGET CZATU -->
+<div id="chat-widget" style="position: fixed; bottom: 20px; right: 20px; width: 300px; background: #222; border: 1px solid #d8a56d; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-family: 'Poppins', sans-serif; z-index: 9999;">
+    <div style="background: #d8a56d; color: #111; padding: 10px; border-top-left-radius: 7px; border-top-right-radius: 7px; font-weight: bold;">Czat z kawiarnią</div>
+    <div id="chat-messages" style="height: 250px; overflow-y: scroll; padding: 10px; font-size: 14px; display: flex; flex-direction: column; gap: 8px; color: #fff;"></div>
+    <div style="display: flex; border-top: 1px solid #444;">
+        <input type="text" id="chat-input" placeholder="Napisz wiadomość..." style="flex: 1; border: none; padding: 10px; outline: none; background: #111; color: white;">
+        <button onclick="sendMessage()" style="background: #d8a56d; color: #111; border: none; padding: 10px; cursor: pointer; border-radius: 0; font-weight: bold;">Wyślij</button>
+    </div>
+</div>
+
+<script>
+async function sendMessage() {
+    const inputField = document.getElementById("chat-input");
+    const messagesContainer = document.getElementById("chat-messages");
+    const text = inputField.value.trim();
+    if (!text) return;
+
+    messagesContainer.innerHTML += `<div><b>Ty:</b> ${text}</div>`;
+    inputField.value = "";
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text })
+        });
+        const data = await response.json();
+        
+        messagesContainer.innerHTML += `<div><b style="color: #d8a56d;">Bot:</b> ${data.reply}</div>`;
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    } catch (error) {
+        messagesContainer.innerHTML += `<div style="color: red;">Błąd połączenia z botem.</div>`;
+    }
+}
+</script>
 
 </body>
 </html>
